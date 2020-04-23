@@ -48,10 +48,10 @@ const loadMoreButton = ({ loading, pagedPokemon }) => {
   `;
 };
 
-const pokemonList = pagedPokemon => {
+const pokemonList = (pagedPokemon) => {
   return html`
     <article class="panel is-shadowless is-radiusless mb-0">
-      ${pagedPokemon.results.map(pokemon => {
+      ${pagedPokemon.results.map((pokemon) => {
         return html`
           <div class="panel-block is-capitalized is-radiusless py-3">
             <span class="panel-icon">
@@ -66,7 +66,7 @@ const pokemonList = pagedPokemon => {
   `;
 };
 
-const pokemon = homeState => {
+const pokemon = (homeState) => {
   const { loading, pagedPokemon } = homeState;
 
   return html`
@@ -93,7 +93,7 @@ const banner = ({ loading, pagedPokemon }) => {
   `;
 };
 
-const content = homeState => {
+const content = (homeState) => {
   return html`
     ${AppNavbar}
 
@@ -107,6 +107,6 @@ const content = homeState => {
 
 fetchPagedPokemons();
 
-state$.subscribe(response => {
+state$.subscribe((response) => {
   render(content(response), root);
 });

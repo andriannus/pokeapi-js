@@ -8,7 +8,7 @@ const apiService = () => {
 
   const baseApi = create({
     baseURL: baseUrl,
-    timeout
+    timeout,
   });
 
   return { baseApi };

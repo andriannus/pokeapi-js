@@ -8,25 +8,25 @@ const pokemonService = () => {
   const store = {
     loading: {
       isFetchPagedPokemons: false,
-      isLoadMore: false
+      isLoadMore: false,
     },
     pagedPokemon: {
       count: 0,
       next: "",
       previous: "",
-      results: []
-    }
+      results: [],
+    },
   };
   const dispatcher = new BehaviorSubject(store);
   const state$ = dispatcher.asObservable();
 
-  const setStore = obj => {
+  const setStore = (obj) => {
     const data = Object.assign(store, obj);
 
     dispatcher.next(data);
   };
 
-  const fetchPagedPokemons = async url => {
+  const fetchPagedPokemons = async (url) => {
     const baseUrl = url || "pokemon";
     const selectedLoading = url ? "isLoadMore" : "isFetchPagedPokemons";
 
@@ -34,8 +34,8 @@ const pokemonService = () => {
       ...store,
       loading: {
         ...store.loading,
-        [selectedLoading]: true
-      }
+        [selectedLoading]: true,
+      },
     });
 
     try {
@@ -49,7 +49,7 @@ const pokemonService = () => {
 
         pagedPokemon = {
           ...data,
-          results: updatedResults
+          results: updatedResults,
         };
       }
 
@@ -57,15 +57,15 @@ const pokemonService = () => {
         ...store,
         loading: {
           ...store.loading,
-          [selectedLoading]: false
+          [selectedLoading]: false,
         },
-        pagedPokemon
+        pagedPokemon,
       });
     } catch (error) {
       setStore({
         ...store.loading,
         isFetchPagedPokemons: false,
-        pagedPokemon: {}
+        pagedPokemon: {},
       });
     }
   };

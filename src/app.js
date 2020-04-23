@@ -1,4 +1,5 @@
 import { html, nothing, render } from "lit-html";
+import "nuz-button-to-top";
 
 import "@/shared/components/app-button-to-top";
 import "@/shared/components/app-loader";
@@ -101,7 +102,7 @@ const content = (homeState) => {
       ${banner(homeState)} ${pokemon(homeState)}
     </div>
 
-    <app-button-to-top></app-button-to-top>
+    <nuz-button-to-top rounded></nuz-button-to-top>
   `;
 };
 

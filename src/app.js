@@ -1,7 +1,6 @@
 import { html, nothing, render } from "lit-html";
 import "nuz-button-to-top";
 
-import "@/shared/components/app-button-to-top";
 import "@/shared/components/app-loader";
 import pokemonService from "@/shared/services/pokemon.service";
 

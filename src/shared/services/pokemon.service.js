@@ -10,6 +10,9 @@ const pokemonService = () => {
       isFetchPagedPokemons: false,
       isLoadMore: false,
     },
+    errorMessage: {
+      fetchPagedPokemons: "",
+    },
     pagedPokemon: {
       count: 0,
       next: "",
@@ -55,17 +58,27 @@ const pokemonService = () => {
 
       setStore({
         ...store,
-        loading: {
-          ...store.loading,
-          [selectedLoading]: false,
+        errorMessage: {
+          ...store.errorMessage,
+          fetchPagedPokemons: ''
         },
         pagedPokemon,
       });
     } catch (error) {
       setStore({
-        ...store.loading,
-        isFetchPagedPokemons: false,
-        pagedPokemon: {},
+        ...store,
+        errorMessage: {
+          ...store.errorMessage,
+          fetchPagedPokemons: 'Something Wrong'
+        }
+      });
+    } finally {
+      setStore({
+        ...store,
+        loading: {
+          ...store.loading,
+          [selectedLoading]: false,
+        },
       });
     }
   };
